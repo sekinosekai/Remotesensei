@@ -1,0 +1,29 @@
+# Choregraphe bezier export in Python.
+from naoqi import ALProxy
+names = list()
+times = list()
+keys = list()
+
+names.append("HipPitch")
+times.append([3.24, 5.8, 8.04, 10.4, 13.24, 15.48])
+keys.append([[0, [3, -1.08, 0], [3, 0.853333, 0]], [-0.289725, [3, -0.853333, 0], [3, 0.746667, 0]], [0, [3, -0.746667, 0], [3, 0.786667, 0]], [-0.289725, [3, -0.786667, 0], [3, 0.946667, 0]], [0, [3, -0.946667, 0], [3, 0.746667, 0]], [-0.0168738, [3, -0.746667, 0], [3, 0, 0]]])
+
+names.append("HipRoll")
+times.append([5.8, 10.4, 15.48])
+keys.append([[0, [3, -1.93333, 0], [3, 1.53333, 0]], [0, [3, -1.53333, 0], [3, 1.69333, 0]], [-0.0122719, [3, -1.69333, 0], [3, 0, 0]]])
+
+names.append("LShoulderPitch")
+times.append([3.24, 8.04, 13.24, 15.48])
+keys.append([[1.70868, [3, -1.08, 0], [3, 1.6, 0]], [1.70868, [3, -1.6, 0], [3, 1.73333, 0]], [1.70868, [3, -1.73333, 0], [3, 0.746667, 0]], [1.76868, [3, -0.746667, 0], [3, 0, 0]]])
+
+names.append("RShoulderPitch")
+times.append([3.24, 8.04, 13.24, 15.48])
+keys.append([[1.70868, [3, -1.08, 0], [3, 1.6, 0]], [1.70868, [3, -1.6, 0], [3, 1.73333, 0]], [1.70868, [3, -1.73333, 0], [3, 0.746667, 0]], [1.73186, [3, -0.746667, 0], [3, 0, 0]]])
+
+try:
+  # uncomment the following line and modify the IP if you use this script outside Choregraphe.
+  # motion = ALProxy("ALMotion", IP, 9559)
+  motion = ALProxy("ALMotion")
+  motion.angleInterpolationBezier(names, times, keys)
+except BaseException, err:
+  print err
